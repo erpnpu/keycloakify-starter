@@ -4,6 +4,9 @@ import type { KcContext } from "./KcContext";
 import { useI18n } from "./i18n";
 import DefaultPage from "keycloakify/login/DefaultPage";
 import Template from "keycloakify/login/Template";
+const Login = lazy(() => import("./pages/Login"));
+const LoginUpdatePassword = lazy(() => import("./pages/LoginUpdatePassword"));
+const LoginUpdateProfile = lazy(() => import("./pages/LoginUpdateProfile"));
 const UserProfileFormFields = lazy(
     () => import("keycloakify/login/UserProfileFormFields")
 );
@@ -19,6 +22,32 @@ export default function KcPage(props: { kcContext: KcContext }) {
         <Suspense>
             {(() => {
                 switch (kcContext.pageId) {
+                    case "login.ftl":
+                        return (
+                            <Login kcContext={kcContext} i18n={i18n} classes={classes} Template={Template} doUseDefaultCss={true} />
+                        );
+                    case "login-update-password.ftl":
+                        return (
+                            <LoginUpdatePassword
+                                kcContext={kcContext}
+                                i18n={i18n}
+                                classes={classes}
+                                Template={Template}
+                                doUseDefaultCss={false}
+                            />
+                        );
+                    case "login-update-profile.ftl":
+                        return (
+                            <LoginUpdateProfile
+                                kcContext={kcContext}
+                                i18n={i18n}
+                                classes={classes}
+                                Template={Template}
+                                doUseDefaultCss={false}
+                                UserProfileFormFields={UserProfileFormFields}
+                                doMakeUserConfirmPassword={doMakeUserConfirmPassword}
+                            />
+                        );
                     default:
                         return (
                             <DefaultPage
