@@ -333,6 +333,18 @@
     font-size: 0.92rem;
 }
 
+.npu-reset-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.npu-reset-actions .npu-submit-button {
+    width: auto;
+    min-width: 140px;
+}
+
 .npu-remember-me {
     display: inline-flex;
     align-items: center;
@@ -570,6 +582,15 @@
         align-items: flex-start;
         flex-direction: column;
         gap: 10px;
+    }
+
+    .npu-reset-actions {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .npu-reset-actions .npu-submit-button {
+        width: 100%;
     }
 
     .npu-current-user-header {
