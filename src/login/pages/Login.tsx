@@ -281,7 +281,7 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
 
                                 <div className="npu-social-grid">
                                     {social.providers.map(provider => {
-                                        const alias = (provider.alias ?? "").trim().toLowerCase();
+                                        const alias = (provider.displayName ?? "").trim().toLowerCase();
                                         const isThaidProvider = alias === "thaid";
                                         const providerName = getSocialProviderDisplayName(
                                             provider.displayName,
